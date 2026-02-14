@@ -4,9 +4,13 @@ import Dashboard from "./pages/dashboard/Dashboard";
 import Transactions from "./pages/transaction/Transaction";
 import Contact from "./pages/contact/Contact";
 
+
 const App = () => {
+
+
+
   return (
-    <div>
+    <div className="overflow-hidden h-screen">
       <Routes>
         <Route path="/" element={<MainLayout />}>
           <Route path="/" element={<Dashboard />} />

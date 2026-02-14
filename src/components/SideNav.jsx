@@ -3,6 +3,11 @@ import { MdSupportAgent } from "react-icons/md";
 import { IoGrid } from "react-icons/io5";
 import { GoArrowSwitch } from "react-icons/go";
 
+import gsap from "gsap";
+import { useEffect } from "react";
+import { useGSAP } from "@gsap/react";
+import { useRef } from "react";
+
 const links = [
   {
     name: "Dashboard",
@@ -17,17 +22,31 @@ const links = [
 ];
 
 const SideNav = () => {
+  const container = useRef(null);
+
+  useGSAP(() => {
+    gsap.from(container.current, {
+      x: "100%",
+      opacity: 1,
+      delay: 1,
+      zIndex: 2,
+      duration: 3,
+      ease: "power4.out",
+      overflow: "hidden",
+    });
+  });
+
   return (
-    <div className="w-[17%] h-screen flex flex-col justify-between pt-12 px-7 pb-6">
-
+    <div
+      ref={container}
+      className="w-[17%] h-screen flex flex-col justify-between pt-12 px-7 pb-6"
+    >
       <div className="flex flex-col gap-10">
-
         <h2 className="text-[#5f02d9] font-medium text-[1.2rem] select-none">
           @DOSOMECODING
         </h2>
 
         <div className="flex flex-col gap-3">
-
           {links.map((link, i) => (
             <NavLink
               key={i}
@@ -45,7 +64,6 @@ const SideNav = () => {
               {link.name}
             </NavLink>
           ))}
-
         </div>
       </div>
 
@@ -63,7 +81,6 @@ const SideNav = () => {
         <MdSupportAgent className="text-3xl" />
         Contact
       </NavLink>
-
     </div>
   );
 };

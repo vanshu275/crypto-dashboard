@@ -1,18 +1,20 @@
-import React from "react";
-import ProfileNav from "./components/ProfileNav";
-import SideNav from "./components/SideNav";
+import { Routes, Route, Link } from "react-router-dom";
+import MainLayout from "./layout/MainLayout";
+import Dashboard from "./pages/dashboard/Dashboard";
+import Transactions from "./pages/transaction/Transaction";
+import Contact from "./pages/contact/Contact";
 
 const App = () => {
   return (
-    <main>
-      <div className="flex items-start">
-        <SideNav/>
-        <ProfileNav />
-      </div>
-      <section>
-        
-      </section>
-    </main>
+    <div>
+      <Routes>
+        <Route path="/" element={<MainLayout />}>
+          <Route path="/" element={<Dashboard />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/contact" element={<Contact />} />
+        </Route>
+      </Routes>
+    </div>
   );
 };
 
